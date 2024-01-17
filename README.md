@@ -124,6 +124,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Odin: [@TOP-todo-list](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)
+- Frontend mentor: [@frontend-mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW)
 
 ## 📝 License
 
