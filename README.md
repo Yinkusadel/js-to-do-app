@@ -1,29 +1,26 @@
-# Project Name
+# Js To-Do-App
 
-> One paragraph statement about the project.
+> This project uses js, Tailwind CSS and Supabase skills to create a to do application which allow users to manage their todos efficiently, including features like adding new todos, marking them as complete, deleting todos, filtering by status, and more.
 
 ![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
 
 ## Built With
 
 - Vite
 - TailwindCSS
-- Major languages,
-- frameworks,
-- technologies used
+- js
+- supabase,
 
 ## Live Demo
 
-[Live Demo Link](https://js-vite-template.netlify.app/)
+[Live Demo Link](adel-js-to-do-app.netlify.app)
 
 ### Development (Running locally)
 
 - Clone the project
 
 ```bash
-git clone https://github.com/bolah2009/js-vite-template.git
+git clone git@github.com:Yinkusadel/js-to-do-app.git
 
 ```
 
@@ -110,9 +107,9 @@ yarn test
 
 ## 👤 Author
 
-- Github: [@author](https://github.com/author)
-- Twitter: [@author](https://twitter.com/author)
-- Linkedin: [@author](https://www.linkedin.com/in/author/)
+- Github: [@yinkusadel](https://github.com/yinkusadel)
+- Twitter: [@HashiraAdel](https://twitter.com/HashiraAdel)
+- Linkedin: [@adeleyeolayinka](https://www.linkedin.com/in/adeleye-olayinka/)
 
 ## 🤝 Contributing
 
@@ -126,9 +123,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration, resources/assets used
-- etc
+- Odin: [@TOP-todo-list](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)
 
 ## 📝 License
 
@@ -141,3 +136,11 @@ Are you intrested how the initial template is setup? Check below for steps and r
 - The template is built with the `create vite` command `yarn create vite js-vite-template --template vanilla` from [the setup guide on vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
 
 - Tailwind is setup with the command `yarn add -D tailwindcss postcss autoprefixer` and `npx tailwindcss init -p`, see [the offical tailwind guide for details](https://tailwindcss.com/docs/guides/vite)
+
+The template provides a minimal setup to get js working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  s
