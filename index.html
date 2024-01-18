@@ -5,9 +5,164 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adel's to-do app</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&family=League+Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="m-0 flex min-h-screen min-w-80 place-items-center">
-    <div class="mx-auto my-0 max-w-7xl p-8 text-center" id="app"></div>
+  <body class="bg-gray-300">
+    <header class="bg-[url('src/images/mobile-blue-bg.png')] bg-cover bg-no-repeat">
+      <div class="mb-0 ml-auto mr-auto mt-0 w-[30rem] pb-12 pl-6 pr-6 pt-12">
+        <section class="mb-8 flex items-center justify-between">
+          <h1 class="text-2xl font-semibold tracking-[7px] text-gray-100">TODO</h1>
+          <button type="button" title="theme" class="cursor-pointer bg-transparent">
+            <img src="./src/images/moontheme.svg" alt="Theme icon" />
+          </button>
+        </section>
+
+        <form action="#">
+          <div class="flex items-center justify-between rounded bg-gray-100 font-custom">
+            <span class="ml-4 h-5 w-6 rounded-full border border-gray-300"></span>
+            <input
+              title="task-to-do"
+              type="text"
+              class="w-full rounded bg-gray-100 p-4 text-gray-400 outline-none"
+              name="task-name"
+              placeholder="Create a new todo..."
+            />
+          </div>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="mb-0 ml-auto mr-auto mt-0 w-[30rem] pb-12 pl-6 pr-6 pt-12 font-custom">
+        <ul class="todos -mt-16">
+          <li
+            class="draggable flex w-full cursor-pointer items-center justify-between rounded-t-lg border-b-2 bg-gray-100 p-4 outline-none"
+          >
+            <div class="flex items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                checked
+                title="input"
+                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+              />
+              <span class="rounded p-1 font-bold text-gray-700 line-through">Bankai</span>
+            </div>
+            <button class="remove-task" title="remove task btn" type="button">
+              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="draggable flex w-full cursor-pointer items-center justify-between border-b-2 bg-gray-100 p-4 outline-none"
+          >
+            <div class="flex items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="input"
+                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+              />
+              <span class="rounded p-1 font-bold text-gray-700">Get a job</span>
+            </div>
+            <button class="remove-task" title="remove task btn" type="button">
+              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="draggable flex w-full cursor-pointer items-center justify-between border-b-2 bg-gray-100 p-4 outline-none"
+          >
+            <div class="flex items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="input"
+                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+              />
+              <span class="rounded p-1 font-bold text-gray-700">Spoil mom and dad</span>
+            </div>
+            <button class="remove-task" title="remove task btn" type="button">
+              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="draggable flex w-full cursor-pointer items-center justify-between border-b-2 bg-gray-100 p-4 outline-none"
+          >
+            <div class="flex items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="input"
+                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+              />
+              <span class="rounded p-1 font-bold text-gray-700">Enjoy school</span>
+            </div>
+            <button class="remove-task" title="remove task btn" type="button">
+              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="draggable flex w-full cursor-pointer items-center justify-between border-b-2 bg-gray-100 p-4 outline-none"
+          >
+            <div class="flex items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="input"
+                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+              />
+              <span class="rounded p-1 font-bold text-gray-700">Get married</span>
+            </div>
+            <button class="remove-task" title="remove task btn" type="button">
+              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="draggable flex w-full cursor-pointer items-center justify-between border-b-2 bg-gray-100 p-4 outline-none"
+          >
+            <div class="flex items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="input"
+                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+              />
+              <span class="rounded p-1 font-bold text-gray-700">Have mini me</span>
+            </div>
+            <button class="remove-task" title="remove task btn" type="button">
+              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+        </ul>
+
+        <div
+          class="mb-4 flex cursor-pointer items-center justify-between gap-6 rounded-tl-none rounded-tr-none bg-gray-100 p-6 text-sm font-bold text-gray-600"
+        >
+          <div class="">
+            <span class="">5</span>
+            <span>items left</span>
+          </div>
+          <span class="text-sm">Clear completed</span>
+        </div>
+
+        <div class="flex justify-around rounded bg-gray-100 p-6">
+          <div class="">
+            <button type="button" class="ml-4 cursor-pointer font-bold text-gray-600">All</button>
+            <button type="button" class="ml-4 cursor-pointer font-bold text-gray-600">
+              Active
+            </button>
+            <button type="button" class="ml-4 cursor-pointer font-bold text-gray-600">
+              Completed
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script type="module" src="src/js/main.js"></script>
   </body>
 </html>
