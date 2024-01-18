@@ -5,13 +5,3 @@ input[type='checkbox']:checked {
   background-size: cover;
   border: none;
 }
-
-.styler {
-  /* padding: 3rem 1.5rem;
-    max-width: 30rem;
-  
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    padding-left: 3rem;
-    padding-right: 3rem; */
-}
