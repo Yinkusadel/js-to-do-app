@@ -1,7 +1,0 @@
-input[type='checkbox']:checked {
-  background-image: linear-gradient(#57ddff, #c058f3);
-  background-color: green;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: none;
-}
