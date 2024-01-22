@@ -4,12 +4,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        custom: ['Josefin Sans', 'sans-serif'],
-      },
-    },
+    extend: {},
   },
-
   plugins: [],
 }
