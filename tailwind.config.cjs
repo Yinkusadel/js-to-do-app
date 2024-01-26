@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         custom: ['Josefin Sans', 'sans-serif'],
       },
+      backgroundImage: {
+        headerimage : "url('src/images/mobile-blue-bg.png')",
+      }
     },
   },
 
