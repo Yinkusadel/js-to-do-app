@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&family=League+Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adel's to-do app</title>
   </head>
@@ -12,12 +19,12 @@
         <section class="mb-8 flex items-center justify-between">
           <h1 class="text-2xl font-semibold tracking-[7px] text-gray-100">TODO</h1>
           <button type="button" title="theme" class="cursor-pointer bg-transparent">
-            <img src="./src/images/moontheme.svg" alt="Theme icon" />
+            <img src="./src/images/icon-moon.svg" alt="Theme icon" />
           </button>
         </section>
 
         <form action="#">
-          <div class="font-custom flex items-center justify-between rounded bg-gray-100">
+          <div class="flex items-center justify-between rounded bg-gray-100 font-josefin">
             <span class="ml-4 h-5 w-6 rounded-full border border-gray-300"></span>
             <input
               title="task-to-do"
@@ -31,7 +38,7 @@
       </div>
     </header>
     <main>
-      <div class="font-custom mb-0 ml-auto mr-auto mt-0 w-[30rem] pb-12 pl-6 pr-6 pt-12">
+      <div class="mb-0 ml-auto mr-auto mt-0 w-[30rem] pb-12 pl-6 pr-6 pt-12 font-josefin">
         <ul class="-mt-16">
           <li
             class="flex w-full cursor-pointer items-center justify-between rounded-t-lg border-b-2 bg-gray-100 p-4 outline-none"
@@ -42,12 +49,14 @@
                 name="input name"
                 checked
                 title="input"
-                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
+                class="peer m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
               />
-              <span class="rounded p-1 font-bold text-gray-700 line-through">Bankai</span>
+              <span class="rounded p-1 font-bold text-gray-700 peer-checked:line-through"
+                >Bankai</span
+              >
             </div>
             <button class="" title="remove task btn" type="button">
-              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
             </button>
           </li>
           <li
@@ -58,12 +67,14 @@
                 type="checkbox"
                 name="input name"
                 title="input"
-                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+                class="peer m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
               />
-              <span class="rounded p-1 font-bold text-gray-700">Get a job</span>
+              <span class="rounded p-1 font-bold text-gray-700 peer-checked:line-through"
+                >Get a job</span
+              >
             </div>
             <button class="" title="remove task btn" type="button">
-              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
             </button>
           </li>
           <li
@@ -74,12 +85,14 @@
                 type="checkbox"
                 name="input name"
                 title="input"
-                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+                class="peer m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
               />
-              <span class="rounded p-1 font-bold text-gray-700">Spoil mom and dad</span>
+              <span class="rounded p-1 font-bold text-gray-700 peer-checked:line-through"
+                >Spoil mom and dad</span
+              >
             </div>
             <button class="" title="remove task btn" type="button">
-              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
             </button>
           </li>
           <li
@@ -90,12 +103,14 @@
                 type="checkbox"
                 name="input name"
                 title="input"
-                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+                class="peer m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
               />
-              <span class="rounded p-1 font-bold text-gray-700">Enjoy school</span>
+              <span class="rounded p-1 font-bold text-gray-700 peer-checked:line-through"
+                >Enjoy school</span
+              >
             </div>
             <button class=" " title="remove task btn" type="button">
-              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
             </button>
           </li>
           <li
@@ -106,12 +121,14 @@
                 type="checkbox"
                 name="input name"
                 title="input"
-                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+                class="peer m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
               />
-              <span class="rounded p-1 font-bold text-gray-700">Get married</span>
+              <span class="rounded p-1 font-bold text-gray-700 peer-checked:line-through"
+                >Get married</span
+              >
             </div>
             <button class="" title="remove task btn" type="button">
-              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
             </button>
           </li>
           <li
@@ -122,12 +139,14 @@
                 type="checkbox"
                 name="input name"
                 title="input"
-                class="m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300"
+                class="peer m-0 h-6 w-6 cursor-pointer appearance-none rounded-full border border-gray-300 from-sky-500 to-purple-500 checked:border-none checked:bg-green-500 checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat"
               />
-              <span class="rounded p-1 font-bold text-gray-700">Have mini me</span>
+              <span class="rounded p-1 font-bold text-gray-700 peer-checked:line-through"
+                >Have mini me</span
+              >
             </div>
             <button class="" title="remove task btn" type="button">
-              <img src="./src/images/cancel.svg" title="cancel-svg" class="h-3 w-3" />
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
             </button>
           </li>
         </ul>
@@ -166,7 +185,7 @@
         </div>
       </div>
     </main>
-    <footer class="font-custom mb-8 mt-16 flex justify-center text-sm font-bold text-gray-500">
+    <footer class="mb-8 mt-16 flex justify-center font-josefin text-sm font-bold text-gray-500">
       <p>Drag and drop to reorder list</p>
     </footer>
 
