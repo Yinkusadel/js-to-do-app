@@ -2,9 +2,7 @@
 
 > This project uses js, Tailwind CSS and Supabase skills to create a to do application which allow users to manage their todos efficiently, including features like adding new todos, marking them as complete, deleting todos, filtering by status, and more.
 
-| Current Design                          | Frontend Mentor Design                               |
-| --------------------------------------- | ---------------------------------------------------- |
-| ![Current design](./app_screenshot.png) | ![Frontend Mentor Design](./Fontendmentordesign.png) |
+![Current design](./app_screenshot.png)
 
 ## Built With
 

@@ -25,7 +25,9 @@ module.exports = {
       },
       backgroundImage: {
         headerimage: "url('/mobile-blue-bg.png')",
-        check: "url('/icon-check.svg)",
+        check: "url('/icon-check.svg')",
+        moonicon: "url('/icon-moon.svg')",
+        sunicon: "url('/icon-sun.svg')",
       }
     },
   },
