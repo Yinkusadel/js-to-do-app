@@ -2,12 +2,213 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/newicon.png" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adel's to-do app</title>
   </head>
-  <body class="m-0 flex min-h-screen min-w-80 place-items-center">
-    <div class="mx-auto my-0 max-w-7xl p-8 text-center" id="app"></div>
+  <body class="bg-blue-100">
+    <header class="bg-headerimage bg-cover bg-no-repeat">
+      <div class="mx-auto w-96 px-6 py-12">
+        <section class="mb-8 flex items-center justify-between">
+          <h1 class="text-2xl font-semibold tracking-[7px] text-blue-0">TODO</h1>
+          <input
+            type="checkbox"
+            id="imageToggle"
+            title="toggle theme"
+            aria-label="toggle theme"
+            class="h-5 w-5 appearance-none bg-moonicon bg-cover bg-center checked:bg-sunicon"
+          />
+        </section>
+
+        <form>
+          <div class="flex items-center justify-between rounded bg-blue-0 font-josefin">
+            <input
+              type="checkbox"
+              name="input-name"
+              title="toggle task"
+              class="peer relative ml-4 h-5 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+              aria-label="toggle task"
+            />
+            <input
+              title="task-to-do"
+              type="text"
+              class="w-full rounded bg-blue-0 p-4 font-semibold text-blue-600 outline-none"
+              name="task-name"
+              placeholder="Create a new todo..."
+              aria-label="Create a new todo..."
+            />
+          </div>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="mx-auto w-96 px-6 py-12 font-josefin">
+        <ul class="-mt-16">
+          <li
+            class="flex w-full cursor-pointer items-center justify-between rounded-t-lg border-b-2 bg-blue-0 p-4 outline-none"
+          >
+            <div class="flex max-w-[90%] items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                checked
+                title="toggle first task"
+                class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+                id="firstinput"
+                aria-label="first task"
+              />
+              <label
+                class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                for="firstinput"
+                >Bankai katenkyo kotsu karamantu shinju orenke ozume shimenudame itochirimadamuno
+                doboye
+              </label>
+            </div>
+            <button title="remove task btn" type="button">
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="flex w-full cursor-pointer items-center justify-between border-b-2 bg-blue-0 p-4 outline-none"
+          >
+            <div class="flex max-w-[90%] items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="toggle second task"
+                aria-label="second task"
+                class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+                id="secondinput"
+              />
+              <label
+                class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                for="secondinput"
+                >Get a job</label
+              >
+            </div>
+            <button title="remove task btn" type="button">
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="flex w-full cursor-pointer items-center justify-between border-b-2 bg-blue-0 p-4 outline-none"
+          >
+            <div class="flex max-w-[90%] items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="toggle third task"
+                aria-label="third task"
+                class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+                id="thirdinput"
+              />
+              <label
+                class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                for="thirdinput"
+                >Spoil mom and dad</label
+              >
+            </div>
+            <button title="remove task btn" type="button">
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="flex w-full cursor-pointer items-center justify-between border-b-2 bg-blue-0 p-4 outline-none"
+          >
+            <div class="flex max-w-[90%] items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="toggle forth task"
+                aria-label="forth task"
+                class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+                id="forthinput"
+              />
+              <label
+                class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                for="forthinput"
+                >Enjoy school</label
+              >
+            </div>
+            <button class=" " title="remove task btn" type="button">
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="flex w-full cursor-pointer items-center justify-between border-b-2 bg-blue-0 p-4 outline-none"
+          >
+            <div class="flex max-w-[90%] items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="toggle fifth task"
+                aria-label="first task"
+                class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+                id="fifthinput"
+              />
+              <label
+                class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                for="fifthinput"
+                >Get married</label
+              >
+            </div>
+            <button title="remove task btn" type="button">
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+          <li
+            class="flex w-full cursor-pointer items-center justify-between border-b-2 bg-blue-0 p-4 outline-none"
+          >
+            <div class="flex max-w-[90%] items-center gap-4">
+              <input
+                type="checkbox"
+                name="input name"
+                title="toggle sixth task"
+                class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-['\2713']"
+                id="sixthinput"
+              />
+              <label
+                class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                for="sixthinput"
+                >Have mini me</label
+              >
+            </div>
+            <button title="remove task btn" type="button">
+              <img src="./src/images/icon-cross.svg" title="cancel-svg" class="h-3 w-3" />
+            </button>
+          </li>
+        </ul>
+
+        <div
+          class="mb-4 flex cursor-pointer items-center justify-between gap-6 rounded-b-lg bg-blue-0 p-6 text-sm font-bold text-gray-600"
+        >
+          <div>
+            <span>5</span>
+            <span>items left</span>
+          </div>
+          <a href="#" class="text-sm hover:text-black">Clear completed</a>
+        </div>
+
+        <div class="flex justify-around rounded bg-blue-0 p-6">
+          <nav class="flex">
+            <a href="#" class="ml-4 cursor-pointer font-bold hover:text-blue-500">All</a>
+            <a href="#" class="ml-4 cursor-pointer font-bold hover:text-blue-500">Active</a>
+            <a href="#" class="ml-4 cursor-pointer font-bold hover:text-blue-500">Completed</a>
+          </nav>
+        </div>
+      </div>
+    </main>
+    <footer class="mb-8 mt-16 flex justify-center font-josefin text-sm font-bold">
+      <p>Drag and drop to reorder list</p>
+    </footer>
+
     <script type="module" src="src/js/main.js"></script>
   </body>
 </html>
