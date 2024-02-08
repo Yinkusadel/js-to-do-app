@@ -17,31 +17,10 @@
   <body class="bg-blue-100">
     <div
       id="login-popup"
-      tabindex="-1"
-      class="fixed left-0 right-0 top-0 z-50 flex h-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/50"
+      class="fixed left-0 right-0 top-0 z-50 hidden h-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/50"
     >
       <div class="relative h-full w-full max-w-md p-4 md:h-auto">
         <div class="relative rounded-lg bg-white shadow">
-          <button
-            type="button"
-            class="popup-close absolute right-2.5 top-3 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-5 w-5"
-              fill="#c6c7c7"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                cliprule="evenodd"
-              ></path>
-            </svg>
-            <span class="sr-only">Close popup</span>
-          </button>
-
           <div class="p-5">
             <h3 class="mb-0.5 text-2xl font-medium"></h3>
             <p class="mb-4 text-sm font-normal text-gray-800"></p>
@@ -52,9 +31,10 @@
               </p>
             </div>
 
-            <form class="w-full">
+            <form class="w-full" id="login-form" novalidate>
               <label for="email" class="sr-only">Email address</label>
               <input
+                id="email"
                 name="email"
                 type="email"
                 autocomplete="email"
@@ -63,6 +43,7 @@
                 placeholder="Email Address"
                 value=""
               />
+              <div id="email-error" class="mb-1 text-sm text-red-500"></div>
               <button
                 type="submit"
                 class="inline-flex w-full items-center justify-center rounded-lg bg-black p-2 py-3 text-sm font-medium text-white outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 disabled:bg-gray-400"
@@ -313,10 +294,20 @@
         </div>
       </div>
     </main>
-    <footer class="mb-8 mt-16 flex justify-center font-josefin text-sm font-bold">
+    <footer class="mb-8 mt-16 flex flex-col items-center font-josefin text-sm font-bold">
       <p>Drag and drop to reorder list</p>
+      <div>
+        <button
+          type="button"
+          class="mt-2 bg-cyan-500 p-2 text-white hover:bg-slate-400 hover:text-black active:translate-y-1 active:bg-slate-500"
+          id="logout-btn"
+        >
+          LOG OUT
+        </button>
+      </div>
     </footer>
 
     <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/logout.js"></script>
   </body>
 </html>
