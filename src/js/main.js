@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const errorContainer = document.getElementById('email-error');
 
 const hideLoginPopup = () => {
   const loginPopup = document.getElementById('login-popup');
@@ -26,13 +27,13 @@ const handleSubmit = (event) => {
   event.preventDefault();
 
   const email = document.getElementById('email').value.trim();
-  const errorContainer = document.getElementById('email-error');
 
   if (isValidEmail(email)) {
     const userId = nanoid();
     sessionStorage.setItem('userId', userId);
     sessionStorage.setItem('isLoggedIn', 'true');
     hideLoginPopup();
+    errorContainer.textContent = '';
   } else {
     errorContainer.textContent = 'Please enter a valid email address.';
   }
