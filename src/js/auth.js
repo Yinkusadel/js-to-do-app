@@ -43,4 +43,13 @@ const loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', handleSubmit);
 
-export default displayLoginPopup;
+const handleLogout = () => {
+  sessionStorage.removeItem('userId');
+  sessionStorage.removeItem('isLoggedIn');
+
+  displayLoginPopup();
+};
+
+const logoutButton = document.getElementById('logout-btn');
+
+logoutButton.addEventListener('click', handleLogout);
