@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { format } from 'date-fns';
 
 const auth = () => {
   const getSession = () => {
@@ -25,7 +26,13 @@ const auth = () => {
     }
   };
 
-  return { getSession, signIn, signOut };
+  const addTodo = (todo) => {
+    const newTodo = { ...todo };
+    newTodo.createdAt = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
+    return newTodo;
+  };
+
+  return { getSession, signIn, signOut, addTodo };
 };
 
 export default auth();
