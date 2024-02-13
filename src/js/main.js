@@ -1,6 +1,19 @@
-import * as auth from './auth';
+import auth from './auth';
 
-const { hideLoginPopup, displayLoginPopup, isValidEmail, errorContainer, logoutButton } = auth;
+const loginPopup = document.getElementById('login-popup');
+const logoutButton = document.getElementById('logout-btn');
+const errorContainer = document.getElementById('email-error');
+const loginForm = document.getElementById('login-form');
+
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+const hideLoginPopup = () => {
+  loginPopup.style.display = 'none';
+};
+
+const displayLoginPopup = () => {
+  loginPopup.style.display = 'flex';
+};
 
 const handleAuthentication = () => {
   const session = auth.getSession();
@@ -34,7 +47,6 @@ const handleSubmit = (event) => {
 const initializeLoginForm = () => {
   handleAuthentication();
   logoutButton.addEventListener('click', handleLogout);
-  const loginForm = document.getElementById('login-form');
   loginForm.addEventListener('submit', handleSubmit);
 };
 
