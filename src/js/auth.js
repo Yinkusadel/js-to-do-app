@@ -1,55 +1,43 @@
 import { nanoid } from 'nanoid';
 
-const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-const errorContainer = document.getElementById('email-error');
+export const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+export const errorContainer = document.getElementById('email-error');
+export const logoutButton = document.getElementById('logout-btn');
+export const loginPopup = document.getElementById('login-popup');
 
-const hideLoginPopup = () => {
-  const loginPopup = document.getElementById('login-popup');
+export const getSession = () => {
+  const userId = sessionStorage.getItem('userId');
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+  if (userId && isLoggedIn) {
+    return { userId, isLoggedIn: isLoggedIn === 'true' };
+  }
+  return null;
+};
+
+export const signOut = () => {
+  sessionStorage.removeItem('userId');
+  sessionStorage.removeItem('isLoggedIn');
+};
+
+export const signIn = (email) => {
+  if (!isValidEmail(email)) {
+    errorContainer.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  sessionStorage.setItem('isLoggedIn', 'true');
+
+  if (!sessionStorage.getItem('userId')) {
+    const userId = nanoid();
+    sessionStorage.setItem('userId', userId);
+  }
+};
+
+export const hideLoginPopup = () => {
   loginPopup.style.display = 'none';
 };
 
-const displayLoginPopup = () => {
-  const loginPopup = document.getElementById('login-popup');
+export const displayLoginPopup = () => {
   loginPopup.style.display = 'flex';
 };
-
-window.addEventListener('DOMContentLoaded', () => {
-  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-
-  if (isLoggedIn === 'true') {
-    hideLoginPopup();
-  } else {
-    displayLoginPopup();
-  }
-});
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-
-  const email = document.getElementById('email').value.trim();
-
-  if (isValidEmail(email)) {
-    const userId = nanoid();
-    sessionStorage.setItem('userId', userId);
-    sessionStorage.setItem('isLoggedIn', 'true');
-    hideLoginPopup();
-    errorContainer.textContent = '';
-  } else {
-    errorContainer.textContent = 'Please enter a valid email address.';
-  }
-};
-
-const loginForm = document.getElementById('login-form');
-
-loginForm.addEventListener('submit', handleSubmit);
-
-const handleLogout = () => {
-  sessionStorage.removeItem('userId');
-  sessionStorage.removeItem('isLoggedIn');
-
-  displayLoginPopup();
-};
-
-const logoutButton = document.getElementById('logout-btn');
-
-logoutButton.addEventListener('click', handleLogout);
