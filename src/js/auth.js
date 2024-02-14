@@ -1,38 +1,36 @@
 import { nanoid } from 'nanoid';
-import { format } from 'date-fns';
 
 const auth = () => {
   const getSession = () => {
     const userId = sessionStorage.getItem('userId');
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const email = sessionStorage.getItem('email');
+    const date = new Date().toISOString();
+    sessionStorage.setItem('createdAt', date);
 
-    if (userId && isLoggedIn) {
-      return { userId, isLoggedIn: isLoggedIn === 'true' };
+    if (userId) {
+      return { userId, email, createdAt: date };
     }
     return null;
   };
 
   const signOut = () => {
     sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('createdAt');
   };
 
-  const signIn = () => {
-    sessionStorage.setItem('isLoggedIn', 'true');
+  const signIn = (email) => {
+    let userId = sessionStorage.getItem('userId');
 
-    if (!sessionStorage.getItem('userId')) {
-      const userId = nanoid();
+    if (!userId) {
+      userId = nanoid();
       sessionStorage.setItem('userId', userId);
     }
+
+    sessionStorage.setItem('email', email);
   };
 
-  const addTodo = (todo) => {
-    const newTodo = { ...todo };
-    newTodo.createdAt = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
-    return newTodo;
-  };
-
-  return { getSession, signIn, signOut, addTodo };
+  return { getSession, signIn, signOut };
 };
 
 export default auth();

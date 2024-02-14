@@ -18,7 +18,7 @@ const displayLoginPopup = () => {
 const handleAuthentication = () => {
   const session = auth.getSession();
 
-  if (session && session.isLoggedIn) {
+  if (session) {
     hideLoginPopup();
   } else {
     displayLoginPopup();
