@@ -32,14 +32,13 @@ const handleSubmit = (event) => {
   event.preventDefault();
 
   const email = document.getElementById('email').value.toLowerCase().trim();
-  const emailValidationResult = auth.validEmail(email);
 
-  if (emailValidationResult.error) {
-    errorContainer.textContent = emailValidationResult.error;
+  const { error } = auth.signIn(email);
+  if (error) {
+    errorContainer.textContent = error;
     return;
   }
 
-  auth.signIn(email);
   hideLoginPopup();
   errorContainer.textContent = '';
 };
