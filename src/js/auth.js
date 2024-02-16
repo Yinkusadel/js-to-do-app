@@ -5,6 +5,15 @@ const auth = () => {
 
   const signOut = () => sessionStorage.removeItem('session');
 
+  const validEmail = (email) => {
+    const goodEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!goodEmail) {
+      return { error: 'Invalid email address.' };
+    }
+    return { error: null };
+  };
+
   const signIn = (email) => {
     let sessionData = getSession();
     if (sessionData) {
@@ -21,15 +30,6 @@ const auth = () => {
     sessionData = { userId, email, createdAt };
     sessionStorage.setItem('session', JSON.stringify(sessionData));
     return sessionData;
-  };
-
-  const validEmail = (email) => {
-    const goodEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    if (!goodEmail) {
-      return { error: 'Invalid email address.' };
-    }
-    return { error: null };
   };
 
   return { getSession, signIn, signOut };
