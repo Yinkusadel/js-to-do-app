@@ -14,6 +14,47 @@
     <title>Adel's to-do app</title>
   </head>
   <body class="bg-blue-100">
+    <div
+      id="login-popup"
+      class="fixed inset-x-0 top-0 z-50 hidden h-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/100"
+    >
+      <div class="relative flex max-w-md items-center justify-center p-4 md:h-auto">
+        <div class="relative w-96 rounded-lg bg-white shadow">
+          <div class="p-5">
+            <h3 class="mb-0.5 text-2xl font-medium"></h3>
+            <p class="mb-4 text-sm font-normal text-gray-800"></p>
+
+            <div class="text-center">
+              <p class="mb-3 text-2xl font-semibold leading-5 text-slate-900">
+                Login to your account
+              </p>
+            </div>
+
+            <form class="w-full" id="login-form" novalidate>
+              <label for="email" class="sr-only">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required=""
+                class="mb-2 mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
+                placeholder="Email Address"
+                value=""
+              />
+              <div id="email-error" class="mb-1 text-sm text-red-500"></div>
+              <button
+                type="submit"
+                class="inline-flex w-full items-center justify-center rounded-lg bg-black p-2 py-3 text-sm font-medium text-white outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 disabled:bg-gray-400"
+              >
+                Continue
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <header class="bg-headerimage bg-cover bg-no-repeat">
       <div class="mx-auto w-96 px-6 py-12 md:w-[45rem]">
         <section class="mb-8 flex items-center justify-between">
@@ -252,10 +293,19 @@
         </div>
       </div>
     </main>
-    <footer class="mb-8 mt-16 flex justify-center font-josefin text-sm font-bold">
+    <footer class="mb-8 mt-16 flex flex-col items-center font-josefin text-sm font-bold">
       <p>Drag and drop to reorder list</p>
+      <div>
+        <button
+          type="button"
+          class="mt-2 bg-cyan-500 p-2 text-white hover:bg-slate-400 hover:text-black active:bg-slate-500"
+          id="logout-btn"
+        >
+          LOG OUT
+        </button>
+      </div>
     </footer>
-
     <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/auth.js"></script>
   </body>
 </html>
