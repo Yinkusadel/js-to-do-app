@@ -68,7 +68,7 @@
           />
         </section>
 
-        <form>
+        <form class="todo-form" id="todoform">
           <div class="flex items-center justify-between rounded bg-blue-0 font-josefin">
             <input
               type="checkbox"
@@ -84,6 +84,7 @@
               name="task-name"
               placeholder="Create a new todo..."
               aria-label="Create a new todo..."
+              id="todoInput"
             />
           </div>
         </form>
@@ -91,7 +92,7 @@
     </header>
     <main>
       <div class="mx-auto w-96 px-6 py-12 font-josefin md:w-[45rem]">
-        <ul class="-mt-16">
+        <!-- <ul class="-mt-16" id="list">
           <li
             class="flex w-full cursor-pointer items-center justify-between rounded-t-lg border-b-2 bg-blue-0 p-4 outline-none"
           >
@@ -249,8 +250,8 @@
               />
             </button>
           </li>
-        </ul>
-
+        </ul> -->
+        <ul class="-mt-16" id="todoList"></ul>
         <div
           class="mb-4 flex cursor-pointer items-center justify-between gap-6 rounded-b-lg bg-blue-0 p-6 text-sm font-bold text-gray-600"
         >
@@ -307,6 +308,6 @@
     </footer>
     <script type="module" src="src/js/main.js"></script>
     <script type="module" src="src/js/auth.js"></script>
-    <script type="module" src="src/js/storedata.js"></script>
+    <script type="module" src="src/js/todoFunctionality.js"></script>
   </body>
 </html>
