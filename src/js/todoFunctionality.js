@@ -1,116 +1,113 @@
+import { formatDistance } from 'date-fns';
 import auth from './auth';
+import store from './store';
 
-const todos = [];
+const todoStore = store();
 
-const userIdCharacters =
-  '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&.*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-const toggleCompleted = (index, refreshTodo) => {
-  todos[index].completed = !todos[index].completed;
-  if (todos[index].completed) {
-    todos[index].completed_at = new Date().toString();
-  } else {
-    todos[index].completed_at = null;
-  }
+const toggleCompleted = (todoId, refreshTodo) => {
+  const { userId } = auth.getSession();
+  todoStore.toggleComplete(userId, todoId);
   refreshTodo();
+};
+
+const renderTodo = (todo) => {
+  const li = document.createElement('li');
+  li.className =
+    'flex w-full cursor-pointer items-center justify-between rounded-t-lg border-b-2 bg-blue-0 p-4 outline-none';
+  const createdAtHuman = formatDistance(todo.created_at, new Date(), { addSuffix: true });
+  const completedAtHuman = todo.completed_at
+    ? formatDistance(todo.completed_at, new Date(), { addSuffix: true })
+    : '';
+
+  li.innerHTML = `
+            <div class="flex max-w-[90%] items-center gap-4">
+                <input
+                    type="checkbox"
+                    name="input name"
+                    title="toggle first task"
+                    class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-[\\u2713]" 
+                    id="checkbox_${todo.id}"
+                    aria-label="first task"
+                    ${todo.completed ? 'checked' : ''}
+                />
+                <label
+                    class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                    for="checkbox_${todo.id}"
+                >
+                <div class="todo-task"></div> <small>${
+                  todo.completed ? `completed ${completedAtHuman}` : `added ${createdAtHuman}`
+                }</small>
+                </label>
+            </div>
+            <div>
+                <button title="remove task btn" type="button" aria-label="remove task">
+                    <img
+                        src="./src/images/icon-cross.svg"
+                        title="cancel-svg"
+                        class="h-3 w-3 duration-300 hover:scale-150"
+                        id="deletetodo_${todo.id}"
+                    />
+                </button>
+            </div>
+        `;
+  li.querySelector('.todo-task').textContent = todo.task;
+  return li;
 };
 
 const renderTodos = () => {
   const todoList = document.getElementById('todoList');
   todoList.innerHTML = '';
-  todos.forEach((todo, index) => {
-    const li = document.createElement('li');
+  const { userId } = auth.getSession();
+  const todos = todoStore.getAll(userId);
+  todos.forEach((todo) => {
+    const todoItem = renderTodo(todo);
 
-    const creationDate = new Date(todo.created_at).toLocaleString();
-
-    li.innerHTML = `
-          <li class="flex w-full cursor-pointer items-center justify-between rounded-t-lg border-b-2 bg-blue-0 p-4 outline-none">
-              <div class="flex max-w-[90%] items-center gap-4">
-                  <input
-                      type="checkbox"
-                      name="input name"
-                      title="toggle first task"
-                      class="peer relative h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-200 from-blue-700 to-blue-800 text-blue-0 before:absolute before:left-1 before:top-0.5 checked:border-none checked:bg-gradient-to-br checked:bg-cover checked:bg-no-repeat checked:before:content-[\\u2713]" 
-                      id="checkbox_${todo.id}"
-                      aria-label="first task"
-                      ${todo.completed ? 'checked' : ''}
-                  />
-                  <label
-                      class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
-                      for="checkbox_${todo.id}"
-                  >
-                  ${todo.task} Created at: ${creationDate}
-                  </label>
-              </div>
-              <div>
-                  <button title="remove task btn" type="button" aria-label="remove task">
-                      <img
-                          src="./src/images/icon-cross.svg"
-                          title="cancel-svg"
-                          class="h-3 w-3 duration-300 hover:scale-150"
-                          id="deletetodo_${index}"
-                      />
-                  </button>
-              </div>
-          </li>
-          `;
-    todoList.appendChild(li);
+    todoList.appendChild(todoItem);
 
     const checkbox = document.getElementById(`checkbox_${todo.id}`);
     checkbox.addEventListener('change', () => {
-      toggleCompleted(index, renderTodos);
+      toggleCompleted(todo.id, renderTodos);
     });
   });
-};
-
-const generateRandomUserId = () => {
-  const UserIdLength = 10;
-  let UserId = '';
-  for (let i = 0; i < UserIdLength; i += 1) {
-    const randomNumber = Math.floor(Math.random() * userIdCharacters.length);
-    UserId += userIdCharacters.charAt(randomNumber);
-  }
-  return UserId;
+  document.querySelector('#todo-count').textContent =
+    todos.length > 1 ? `${todos.length} items` : `${todos.length} item`;
 };
 
 const addTodo = (event) => {
   event.preventDefault();
-  const todoInput = document.getElementById('todoInput');
-  const todoText = todoInput.value.trim();
+  const todoTask = document.querySelector('input[name=todo-task]').value.trim();
+  const todoCompleted = document.querySelector('input[name=todo-complete]').checked;
 
-  if (todoText.length > 255) {
+  if (todoTask.length > 255) {
     return;
   }
 
-  if (todoText !== '') {
-    const todo = {
-      id: generateRandomUserId(),
-      task: todoText,
-      priority: 1,
-      completed: false,
-      user_id: auth.getSession(),
-      created_at: new Date().toISOString(),
-      modified_at: null,
-      completed_at: null,
-    };
-    todos.push(todo);
+  if (todoTask !== '') {
+    const { userId } = auth.getSession();
+    todoStore.addTodo(userId, todoTask, todoCompleted);
     renderTodos();
-    todoInput.value = '';
+    event.target.reset();
   }
 };
 
-const deleteTodo = (index) => {
-  todos.splice(index, 1);
+const deleteTodo = (todoId) => {
+  const { userId } = auth.getSession();
+  todoStore.deleteTodo(userId, todoId);
+
   renderTodos();
 };
 
-document.getElementById('todoform').addEventListener('submit', addTodo);
+const startUpTodo = () => {
+  document.getElementById('todoform').addEventListener('submit', addTodo);
 
-document.getElementById('todoList').addEventListener('click', (event) => {
-  if (event.target && event.target.id.startsWith('deletetodo')) {
-    const index = event.target.id.split('_')[1];
-    deleteTodo(index);
-  }
-});
+  document.getElementById('todoList').addEventListener('click', (event) => {
+    if (event.target && event.target.id.startsWith('deletetodo')) {
+      const todoId = event.target.id.split('_')[1];
+      deleteTodo(todoId);
+    }
+  });
 
-renderTodos();
+  renderTodos();
+};
+
+export default startUpTodo;

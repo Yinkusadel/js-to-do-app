@@ -1,4 +1,5 @@
 import auth from './auth';
+import startUpTodo from './todoFunctionality';
 
 const loginPopup = document.getElementById('login-popup');
 const logoutButton = document.getElementById('logout-btn');
@@ -18,6 +19,7 @@ const handleAuthentication = () => {
 
   if (session) {
     hideLoginPopup();
+    startUpTodo();
   } else {
     displayLoginPopup();
   }
@@ -40,6 +42,7 @@ const handleSubmit = (event) => {
   }
 
   hideLoginPopup();
+  startUpTodo();
   errorContainer.textContent = '';
 };
 
