@@ -33,6 +33,14 @@ const store = () => {
     todos.push(todo);
   };
 
+  //   const getLocalStorageTodos = () => {
+  //     return JSON.parse(localStorage.getItem('todos')) || [];
+  //   };
+
+  //   const updateLocalStorageTodos = (updatedTodos) => {
+  //     localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  //   };
+
   return {
     getAll,
     toggleComplete,

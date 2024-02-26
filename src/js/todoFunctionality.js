@@ -31,10 +31,10 @@ const renderTodo = (todo) => {
                     ${todo.completed ? 'checked' : ''}
                 />
                 <label
-                    class="max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
+                    class="flex flex-col max-w-[85%] cursor-pointer rounded p-1 font-bold text-blue-400 peer-checked:text-blue-300 peer-checked:line-through"
                     for="checkbox_${todo.id}"
                 >
-                <div class="todo-task"></div> <small>${
+                <div class="todo-task break-words"></div> <small class="self-end pt-10">${
                   todo.completed ? `completed ${completedAtHuman}` : `added ${createdAtHuman}`
                 }</small>
                 </label>
