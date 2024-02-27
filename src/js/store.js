@@ -1,7 +1,17 @@
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid/non-secure';
+
+const nanoid = customAlphabet('1234567890abcdef', 10);
 
 const store = () => {
   let todos = [];
+
+  const getLocalStorageTodos = () => {
+    return JSON.parse(localStorage.getItem('todos')) || [];
+  };
+
+  const updateLocalStorageTodos = () => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  };
 
   const getAll = (userId) => todos.filter(({ todoUserId }) => todoUserId === userId);
   const toggleComplete = (userId, todoId) => {
@@ -14,9 +24,11 @@ const store = () => {
       todos[currentIndex].completed_at = new Date().toISOString();
     }
     todos[currentIndex].completed = !todos[currentIndex].completed;
+    updateLocalStorageTodos();
   };
   const deleteTodo = (userId, todoId) => {
     todos = todos.filter(({ todoUserId, id }) => todoUserId === userId && id !== todoId);
+    updateLocalStorageTodos();
   };
 
   const addTodo = (userId, task, completed) => {
@@ -31,15 +43,10 @@ const store = () => {
       completed_at: completed ? new Date().toISOString() : null,
     };
     todos.push(todo);
+    updateLocalStorageTodos();
   };
 
-  //   const getLocalStorageTodos = () => {
-  //     return JSON.parse(localStorage.getItem('todos')) || [];
-  //   };
-
-  //   const updateLocalStorageTodos = (updatedTodos) => {
-  //     localStorage.setItem('todos', JSON.stringify(updatedTodos));
-  //   };
+  todos = getLocalStorageTodos();
 
   return {
     getAll,
