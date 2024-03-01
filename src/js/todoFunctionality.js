@@ -42,7 +42,7 @@ const renderTodo = (todo) => {
             <div>
                 <button title="remove task btn" type="button" aria-label="remove task">
                     <img
-                        src="./src/images/icon-cross.svg"
+                        src="./icon-cross.svg"
                         title="cancel-svg"
                         class="h-3 w-3 duration-300 hover:scale-150"
                         id="deletetodo_${todo.id}"
