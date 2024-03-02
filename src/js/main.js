@@ -1,6 +1,6 @@
 import auth from './auth';
 import authUi from './authUi';
-import startUpTodo from './todoFunctionality';
+import startUpTodo from './todo';
 
 const logoutButton = document.getElementById('logout-btn');
 const loginForm = document.getElementById('login-form');
