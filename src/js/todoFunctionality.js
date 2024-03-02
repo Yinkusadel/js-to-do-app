@@ -2,6 +2,8 @@ import { formatDistance } from 'date-fns';
 import auth from './auth';
 import store from './store';
 
+const errorContainer = document.getElementById('email-error');
+
 const todoStore = store();
 
 const toggleCompleted = (todoId, refreshTodo) => {
@@ -73,6 +75,35 @@ const renderTodos = () => {
     todos.length > 1 ? `${todos.length} items` : `${todos.length} item`;
 };
 
+const checkSession = (type = '') => {
+  const session = auth.getSession();
+  if (!session) {
+    const loginPopup = document.getElementById('login-popup');
+    loginPopup.classList.replace('hidden', 'flex');
+    let errorMessage = 'when not logged in, Please login with your email address.';
+    switch (type) {
+      case 'addTodo':
+        errorMessage = `You can't add a new todo ${errorMessage}`;
+        break;
+
+      case 'deleteTodo':
+        errorMessage = `You can't add a new todo ${errorMessage}`;
+        break;
+
+      case 'toggleTodo':
+        errorMessage = `You can't add a new todo ${errorMessage}`;
+        break;
+
+      default:
+        errorMessage = `You can't work with todo ${errorMessage}`;
+        break;
+    }
+    errorContainer.textContent = errorMessage;
+    return null;
+  }
+  return session;
+};
+
 const addTodo = (event) => {
   event.preventDefault();
   const todoTask = document.querySelector('input[name=todo-task]').value.trim();
@@ -83,10 +114,14 @@ const addTodo = (event) => {
   }
 
   if (todoTask !== '') {
-    const { userId } = auth.getSession();
-    todoStore.addTodo(userId, todoTask, todoCompleted);
-    renderTodos();
-    event.target.reset();
+    const currentSession = checkSession('addTodo');
+    if (currentSession) {
+      const { userId } = currentSession;
+
+      todoStore.addTodo(userId, todoTask, todoCompleted);
+      renderTodos();
+      event.target.reset();
+    }
   }
 };
 
