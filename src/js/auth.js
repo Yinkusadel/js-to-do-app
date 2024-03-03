@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 
 const auth = () => {
   const getLocalStorageUser = (email) => {
-    const users = JSON.parse(localStorage.getItem('yukusadel-js-todo-app-users')) || [];
+    const users = JSON.parse(localStorage.getItem('yinkusadel-js-todo-app-users')) || [];
     if (users.length > 0) {
       return users.find((user) => user.email === email);
     }
@@ -10,10 +10,10 @@ const auth = () => {
   };
 
   const addLocalStorageUser = (sessionData) => {
-    const users = JSON.parse(localStorage.getItem('yukusadel-js-todo-app-users')) || [];
+    const users = JSON.parse(localStorage.getItem('yinkusadel-js-todo-app-users')) || [];
     users.push(sessionData);
 
-    localStorage.setItem('yukusadel-js-todo-app-users', JSON.stringify(users));
+    localStorage.setItem('yinkusadel-js-todo-app-users', JSON.stringify(users));
   };
 
   const getSession = () => JSON.parse(sessionStorage.getItem('session'));
