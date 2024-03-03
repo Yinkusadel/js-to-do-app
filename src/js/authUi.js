@@ -28,9 +28,7 @@ const authUi = (auth) => {
     handleAuthentication();
   };
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-
+  const handleLogin = () => {
     const email = document.getElementById('email').value.toLowerCase().trim();
 
     const { error } = auth.signIn(email);

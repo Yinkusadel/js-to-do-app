@@ -16,7 +16,10 @@ const initializeLoginForm = () => {
   logoutButton.addEventListener('click', authentication.handleLogout);
   loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    authentication.handleLogin(event);
+    const userSuccessfullyLoggedIn = authentication.handleLogin();
+    if (userSuccessfullyLoggedIn) {
+      startUpTodo();
+    }
   });
 };
 
