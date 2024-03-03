@@ -6,11 +6,11 @@ const store = () => {
   let todos = [];
 
   const getLocalStorageTodos = () => {
-    return JSON.parse(localStorage.getItem('todos')) || [];
+    return JSON.parse(localStorage.getItem('yukusadel-js-todo-app-todos')) || [];
   };
 
   const updateLocalStorageTodos = () => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('yukusadel-js-todo-app-todos', JSON.stringify(todos));
   };
 
   const getAll = (userId) => todos.filter(({ todoUserId }) => todoUserId === userId);
