@@ -18,6 +18,26 @@ const handleDragStart = (event) => {
 
 const handleDragOver = (event) => {
   event.preventDefault();
+
+  const draggedElementRect = event.target.getBoundingClientRect();
+  const topOffset = draggedElementRect.top;
+  const bottomOffset = window.innerHeight - draggedElementRect.bottom;
+
+  const scrollThreshold = 150;
+
+  if (topOffset < scrollThreshold) {
+    window.scrollTo({
+      top: window.scrollY - (scrollThreshold - topOffset),
+      behavior: 'smooth',
+    });
+  }
+
+  if (bottomOffset < scrollThreshold) {
+    window.scrollTo({
+      top: window.scrollY + (scrollThreshold - bottomOffset),
+      behavior: 'smooth',
+    });
+  }
 };
 
 const handleDrop = (event) => {
