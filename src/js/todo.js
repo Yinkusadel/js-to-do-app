@@ -61,8 +61,27 @@ const handleDrop = (event) => {
     } else {
       todoList.appendChild(draggedTodoItem);
     }
+
+    const todoItems = Array.from(todoList.children).map((item) => item.id);
+    localStorage.setItem('todoOrder', JSON.stringify(todoItems));
   }
 };
+
+const loadTodoOrder = () => {
+  const todoOrder = localStorage.getItem('todoOrder');
+  if (todoOrder) {
+    const todoList = document.getElementById('todoList');
+    const orderedIds = JSON.parse(todoOrder);
+    orderedIds.forEach((id) => {
+      const item = document.getElementById(id);
+      if (item) {
+        todoList.appendChild(item);
+      }
+    });
+  }
+};
+
+window.addEventListener('load', loadTodoOrder);
 
 const renderTodo = (todo) => {
   const li = document.createElement('li');
@@ -182,6 +201,7 @@ const addTodo = (event) => {
 
       todoStore.addTodo(userId, todoTask, todoCompleted);
       renderTodos();
+      loadTodoOrder();
       event.target.reset();
     }
   }
@@ -192,6 +212,7 @@ const deleteTodo = (todoId) => {
   todoStore.deleteTodo(userId, todoId);
 
   renderTodos();
+  loadTodoOrder();
 };
 
 const startUpTodo = () => {
