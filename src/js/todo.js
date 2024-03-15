@@ -141,7 +141,7 @@ const renderTodos = () => {
   todos.forEach((todo) => {
     const todoItem = renderTodo(todo);
 
-    todoList.appendChild(todoItem);
+    todoList.insertBefore(todoItem, todoList.firstChild);
 
     const checkbox = document.getElementById(`checkbox_${todo.id}`);
     checkbox.addEventListener('change', () => {
