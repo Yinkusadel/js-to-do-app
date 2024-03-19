@@ -12,12 +12,29 @@ const toggleCompleted = (todoId, refreshTodo) => {
   refreshTodo();
 };
 
+let draggedElement = null;
+
 const handleDragStart = (event) => {
-  event.dataTransfer.setData('text/plain', event.target.id);
+  draggedElement = event.target;
+  event.target.classList.add('bg-red-200');
 };
 
 const handleDragOver = (event) => {
   event.preventDefault();
+  const hoveredElement = event.target;
+
+  if (hoveredElement !== draggedElement) {
+    const hoveredRect = hoveredElement.getBoundingClientRect();
+    const draggedRect = draggedElement.getBoundingClientRect();
+
+    const distance = hoveredRect.top - draggedRect.top;
+
+    if (distance > 0) {
+      hoveredElement.parentNode.insertBefore(draggedElement, hoveredElement.nextSibling);
+    } else {
+      hoveredElement.parentNode.insertBefore(draggedElement, hoveredElement);
+    }
+  }
 
   const draggedElementRect = event.target.getBoundingClientRect();
   const topOffset = draggedElementRect.top;
@@ -38,6 +55,10 @@ const handleDragOver = (event) => {
       behavior: 'smooth',
     });
   }
+};
+
+const handleDragEnd = (event) => {
+  event.target.classList.remove('bg-red-200');
 };
 
 const handleDrop = (event) => {
@@ -61,27 +82,8 @@ const handleDrop = (event) => {
     } else {
       todoList.appendChild(draggedTodoItem);
     }
-
-    const todoItems = Array.from(todoList.children).map((item) => item.id);
-    localStorage.setItem('todoOrder', JSON.stringify(todoItems));
   }
 };
-
-const loadTodoOrder = () => {
-  const todoOrder = localStorage.getItem('todoOrder');
-  if (todoOrder) {
-    const todoList = document.getElementById('todoList');
-    const orderedIds = JSON.parse(todoOrder);
-    orderedIds.forEach((id) => {
-      const item = document.getElementById(id);
-      if (item) {
-        todoList.appendChild(item);
-      }
-    });
-  }
-};
-
-window.addEventListener('load', loadTodoOrder);
 
 const renderTodo = (todo) => {
   const li = document.createElement('li');
@@ -129,6 +131,7 @@ const renderTodo = (todo) => {
   `;
 
   li.addEventListener('dragstart', handleDragStart);
+  li.addEventListener('dragend', handleDragEnd);
 
   return li;
 };
@@ -201,7 +204,6 @@ const addTodo = (event) => {
 
       todoStore.addTodo(userId, todoTask, todoCompleted);
       renderTodos();
-      loadTodoOrder();
       event.target.reset();
     }
   }
@@ -212,7 +214,6 @@ const deleteTodo = (todoId) => {
   todoStore.deleteTodo(userId, todoId);
 
   renderTodos();
-  loadTodoOrder();
 };
 
 const startUpTodo = () => {
