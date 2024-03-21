@@ -16,7 +16,7 @@ let draggedElement = null;
 
 const handleDragStart = (event) => {
   draggedElement = event.target;
-  event.target.classList.add('bg-headerimage', 'bg-cover', 'bg-no-repeat');
+  event.target.classList.add('bg-indigo-300');
 };
 
 const handleDragOver = (event) => {
@@ -58,7 +58,7 @@ const handleDragOver = (event) => {
 };
 
 const handleDragEnd = (event) => {
-  event.target.classList.remove('bg-headerimage', 'bg-cover', 'bg-no-repeat');
+  event.target.classList.remove('bg-indigo-300');
 };
 
 const handleDrop = (event) => {
