@@ -28,6 +28,12 @@ const store = () => {
   };
   const deleteTodo = (userId, todoId) => {
     todos = todos.filter(({ todoUserId, id }) => todoUserId === userId && id !== todoId);
+
+    todos = todos.map((todo, index) => ({
+      ...todo,
+      priority: index + 1,
+    }));
+
     updateLocalStorageTodos();
   };
 
