@@ -81,7 +81,6 @@ const renderTodos = () => {
   todoList.addEventListener('dragstart', todoDragAndDrop.handleDragStart);
   todoList.addEventListener('dragover', todoDragAndDrop.handleDragOver);
   todoList.addEventListener('dragend', todoDragAndDrop.handleDragEnd);
-  todoList.addEventListener('drop', todoDragAndDrop.handleDrop);
 
   document.querySelector('#todo-count').textContent =
     todos.length > 1 ? `${todos.length} items` : `${todos.length} item`;

@@ -53,35 +53,10 @@ const DragAndDrop = () => {
     event.target.classList.remove('bg-indigo-300');
   };
 
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const todoId = event.dataTransfer.getData('text/plain');
-    const draggedTodoItem = document.getElementById(todoId);
-    const todoList = document.getElementById('todoList');
-
-    if (draggedTodoItem) {
-      const closestTodoItem = event.target.closest('.todo-item');
-
-      if (closestTodoItem) {
-        if (
-          event.clientY <
-          closestTodoItem.getBoundingClientRect().top + closestTodoItem.offsetHeight / 2
-        ) {
-          todoList.insertBefore(draggedTodoItem, closestTodoItem);
-        } else {
-          todoList.insertBefore(draggedTodoItem, closestTodoItem.nextSibling);
-        }
-      } else {
-        todoList.appendChild(draggedTodoItem);
-      }
-    }
-  };
-
   return {
     handleDragStart,
     handleDragOver,
     handleDragEnd,
-    handleDrop,
   };
 };
 
