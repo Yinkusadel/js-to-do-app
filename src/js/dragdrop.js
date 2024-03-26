@@ -10,23 +10,28 @@ const DragAndDrop = () => {
     event.preventDefault();
     const hoveredElement = event.target;
 
-    if (hoveredElement !== draggedElement) {
-      const hoveredRect = hoveredElement.getBoundingClientRect();
-      const draggedRect = draggedElement.getBoundingClientRect();
-
-      const distance = hoveredRect.top - draggedRect.top;
-
-      if (distance > 0) {
-        hoveredElement.parentNode.insertBefore(draggedElement, hoveredElement.nextSibling);
-      } else {
-        hoveredElement.parentNode.insertBefore(draggedElement, hoveredElement);
-      }
+    if (draggedElement.contains(hoveredElement)) {
+      return;
     }
 
-    const draggedElementRect = event.target.getBoundingClientRect();
+    if (hoveredElement === draggedElement) {
+      return;
+    }
+
+    const hoveredRect = hoveredElement.getBoundingClientRect();
+    const draggedRect = draggedElement.getBoundingClientRect();
+
+    const distance = hoveredRect.top - draggedRect.top;
+
+    if (distance > 0) {
+      hoveredElement.parentNode.insertBefore(draggedElement, hoveredElement.nextSibling);
+    } else {
+      hoveredElement.parentNode.insertBefore(draggedElement, hoveredElement);
+    }
+
+    const draggedElementRect = draggedElement.getBoundingClientRect();
     const topOffset = draggedElementRect.top;
     const bottomOffset = window.innerHeight - draggedElementRect.bottom;
-
     const scrollThreshold = 150;
 
     if (topOffset < scrollThreshold) {

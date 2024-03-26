@@ -52,6 +52,17 @@ const store = () => {
     updateLocalStorageTodos();
   };
 
+  const updateTodoOrder = (userId) => {
+    const userTodos = todos.filter(({ todoUserId }) => todoUserId === userId);
+    const updatedTodos = userTodos.map((todo, index) => ({
+      ...todo,
+      priority: index + 1,
+    }));
+    todos = todos.map(
+      (todo) => updatedTodos.find((updatedTodo) => updatedTodo.id === todo.id) || todo,
+    );
+  };
+
   todos = getLocalStorageTodos();
 
   return {
@@ -59,6 +70,7 @@ const store = () => {
     toggleComplete,
     deleteTodo,
     addTodo,
+    updateTodoOrder,
   };
 };
 
